@@ -31,9 +31,31 @@ const featuredProjects = projects.slice(0, 3);
     </div>
   </section>
 
+  <!-- About Section -->
+  <section id="about" class="py-16 bg-gray-50 border-t border-gray-200">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6 text-center">About Me</h2>
+        
+        <div class="prose prose-lg text-gray-700 max-w-none">
+          <p>I'm Moi, a PhD student, coder, and climbing instructor.</p>
+          
+          <h3>Academic Background</h3>
+          <p>I focus on data-driven biology and computational methods. My research involves analyzing complex biological datasets and building tools to make sense of them.</p>
+
+          <h3>Coding</h3>
+          <p>I build web apps, data pipelines, and visualization tools. I'm passionate about open-source software and making research more accessible.</p>
+          
+          <h3>Climbing</h3>
+          <p>When I'm not behind a screen, you'll likely find me at the local climbing gym or crag. I instruct climbers of all levels and love the problem-solving nature of the sport.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Projects Teaser -->
   {featuredProjects.length > 0 && (
-    <section class="py-16 bg-gray-50 border-t border-gray-200">
+    <section class="py-16 bg-white border-t border-gray-200">
       <div class="container-custom">
         <div class="flex justify-between items-end mb-12">
           <div>

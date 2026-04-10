@@ -38,7 +38,7 @@ A modern, professional personal website serving as a central hub for my blog, po
 ├── src/
 │   ├── components/            # Reusable UI components
 │   ├── layouts/               # Base layout templates
-│   ├── pages/                 # Route pages (about, blog, contact, etc.)
+│   ├── pages/                 # Route pages (blog, contact, etc.)
 │   ├── styles/                # Global styles & Tailwind
 │   └── content/               # Content configurations
 ├── content/                   # MARKDOWN-FIRST CONTENT
