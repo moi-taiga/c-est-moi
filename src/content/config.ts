@@ -19,21 +19,6 @@ const projects = defineCollection({
   }),
 });
 
-const publications = defineCollection({
-  type: 'content',
-  schema: z.object({
-    title: z.string(),
-    authors: z.array(z.string()),
-    year: z.number().int().min(1900).max(2030),
-    journal: z.string(),
-    doi: z.string().optional(),
-    url: z.string().url().optional(),
-    openAccessPdf: z.string().url().optional(),
-    featured: z.boolean().default(false),
-    abstract: z.string().optional(),
-  }),
-});
-
 const blog = defineCollection({
   type: 'content',
   schema: z.object({
@@ -47,6 +32,5 @@ const blog = defineCollection({
 
 export const collections = {
   projects,
-  publications,
   blog,
 };
