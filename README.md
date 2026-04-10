@@ -2,6 +2,8 @@
 
 A modern, professional personal website serving as a central hub for my blog, portfolio, CV, and publications. Built with Astro, Tailwind CSS, and TypeScript, featuring markdown-first content management.
 
+now uses GH actions to build and deploy!
+
 ## 🚀 Quick Start
 
 ### Prerequisites
