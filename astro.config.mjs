@@ -4,8 +4,8 @@ import tailwind from '@astrojs/tailwind';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://www.ddnetbio.com',
-  base: '/DDNB_website/', // Required for GitHub Pages deployment
+  site: 'https://c-est-moi.com',
+  base: '/c-est-moi/', // Required for GitHub Pages deployment
   output: 'static',
   integrations: [tailwind()],
   trailingSlash: 'always'

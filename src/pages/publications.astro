@@ -2,9 +2,6 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
-const basePath = import.meta.env.BASE_URL;
-const baseUrl = basePath.endsWith('/') ? basePath : basePath + '/';
-
 const publications = (await getCollection('publications'))
   .sort((a, b) => b.data.year - a.data.year);
 ---
