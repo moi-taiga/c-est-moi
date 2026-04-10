@@ -1,0 +1,41 @@
+---
+// Hero section for Moi's personal portfolio
+const baseUrl = import.meta.env.BASE_URL;
+const basePath = baseUrl.endsWith('/') ? baseUrl : baseUrl + '/';
+---
+
+<section class="relative h-[80vh] flex items-center justify-center overflow-hidden bg-gray-900">
+  <!-- Background Image - Placeholder -->
+  <div class="absolute inset-0 z-0">
+    <div class="w-full h-full bg-gradient-to-br from-indigo-900 to-purple-800"></div>
+    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+  </div>
+  
+  <!-- Hero Content -->
+  <div class="relative z-20 text-center text-white px-4 max-w-4xl mx-auto mt-16">
+    <h1 class="text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
+      Hi, I'm Moi
+    </h1>
+    <p class="text-xl md:text-3xl mb-4 opacity-95 font-light animate-slide-up" style="animation-delay: 0.2s;">
+      PhD Student • Coder • Climbing Instructor
+    </p>
+    <p class="text-lg md:text-xl opacity-80 mt-8 max-w-2xl mx-auto animate-slide-up" style="animation-delay: 0.4s;">
+      I explore the intersection of data, biology, and computation, build tools to solve complex problems, and teach people how to scale walls safely.
+    </p>
+    <div class="mt-10 flex gap-4 justify-center animate-slide-up" style="animation-delay: 0.6s;">
+      <a href={`${basePath}about/`} class="px-6 py-3 bg-white text-indigo-900 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+        More About Me
+      </a>
+      <a href={`${basePath}projects/`} class="px-6 py-3 border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-indigo-900 transition-colors">
+        View My Work
+      </a>
+    </div>
+  </div>
+  
+  <!-- Scroll Indicator -->
+  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 animate-bounce">
+    <div class="w-6 h-10 border-2 border-white rounded-full flex justify-center">
+        <div class="w-1 h-3 bg-white rounded-full mt-2 animate-pulse"></div>
+    </div>
+  </div>
+</section>
