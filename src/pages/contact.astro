@@ -1,5 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const basePath = import.meta.env.BASE_URL;
+const contactUrl = basePath.endsWith('/') ? `${basePath}contact/` : `${basePath}/contact/`;
 ---
 
 <BaseLayout title="Contact - Moi">
@@ -13,21 +16,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           Whether you want to discuss a research collaboration, ask a question about coding, or schedule a climbing session, I'd love to hear from you.
         </p>
 
-        <div class="space-y-4">
-          <div class="flex items-center text-gray-600">
-            <!-- Icon -->
-            <svg class="w-6 h-6 mr-3 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-            </svg>
-            <a href="mailto:moi.t.nicholas@gmail.com" class="hover:text-indigo-600 transition-colors">moi.t.nicholas@gmail.com</a>
-          </div>
+        <div class="space-y-4 text-gray-600">
+          <p>Please use the contact form on this page to send your message.</p>
         </div>
       </div>
       
       <!-- Right Form Side -->
       <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
-        <form name="contact" method="POST" data-netlify="true" class="space-y-6">
+        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action={contactUrl} class="space-y-6">
           <input type="hidden" name="form-name" value="contact" />
+          <input type="hidden" name="bot-field" />
           
           <div>
             <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>

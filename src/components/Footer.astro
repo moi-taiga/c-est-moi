@@ -1,5 +1,7 @@
 ---
 const currentYear = new Date().getFullYear();
+const basePath = import.meta.env.BASE_URL;
+const contactUrl = basePath.endsWith('/') ? `${basePath}contact/` : `${basePath}/contact/`;
 ---
 
 <footer class="bg-gray-50 border-t border-gray-200">
@@ -14,8 +16,8 @@ const currentYear = new Date().getFullYear();
         
         <!-- Contact -->
         <p class="text-gray-600 mb-4 mt-6">
-          <a href="mailto:moi.t.nicholas@gmail.com" class="hover:text-tekhelet transition-colors duration-200">
-            moi.t.nicholas@gmail.com
+          <a href={contactUrl} class="hover:text-tekhelet transition-colors duration-200">
+            Use the contact form
           </a>
         </p>
         
