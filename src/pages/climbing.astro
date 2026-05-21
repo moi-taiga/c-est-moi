@@ -1,10 +1,17 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const basePath = import.meta.env.BASE_URL;
+const baseUrl = basePath.endsWith('/') ? basePath : basePath + '/';
 ---
 
 <BaseLayout title="Climbing - Moi">
   <div class="container-custom py-16">
-    <div class="max-w-4xl mx-auto bg-white p-8 md:p-12 rounded-xl shadow-sm border border-gray-100">
+    <div class="surface-card relative mx-auto max-w-4xl overflow-hidden p-8 md:p-12">
+      <svg class="page-sketch right-4 top-4 hidden h-32 w-40 md:block" viewBox="0 0 160 120" fill="none" aria-hidden="true">
+        <path d="M12 98L48 56L70 78L108 30L148 98" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M28 98L58 74L78 88L108 52L132 98" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
       <h1 class="text-4xl font-bold text-gray-900 mb-6">Climbing Info</h1>
       <p class="text-lg text-gray-700 leading-relaxed mb-8">
         Climbing has taught me focus, patience, and problem-solving beyond the keyboard. As an instructor, I aim to help others find that same mental clarity and physical challenge.
@@ -18,7 +25,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
         <h2 class="text-2xl font-bold text-gray-800">Booking a Session</h2>
         <p class="text-gray-600">
-          I currently hold regular sessions locally. If you're interested in climbing instruction or want some tips on breaking into the sport, get in touch through my <a href="/contact/" class="text-indigo-600 hover:text-indigo-800 underline">contact page</a>.
+          I currently hold regular sessions locally. If you're interested in climbing instruction or want some tips on breaking into the sport, get in touch through my <a href={`${baseUrl}contact/`} class="accent-link underline-offset-4">contact page</a>.
         </p>
       </div>
     </div>

@@ -8,10 +8,19 @@ const projects = await getCollection('projects');
 
 <BaseLayout title="Projects - Moi">
   <div class="container-custom py-16">
-    <h1 class="text-4xl font-bold text-gray-900 mb-4">Projects</h1>
-    <p class="text-xl text-gray-600 mb-12 max-w-2xl">
-      Here is a selection of tools, resources, and apps I've built or contributed to.
-    </p>
+    <div class="surface-soft relative mb-12 overflow-hidden px-8 py-10 md:px-10">
+      <svg class="page-sketch right-6 top-6 hidden h-24 w-32 md:block" viewBox="0 0 140 100" fill="none" aria-hidden="true">
+        <path d="M24 76H116V28H24V76Z" stroke="currentColor" stroke-width="3" stroke-linejoin="round" />
+        <path d="M40 62L62 44L80 52L100 36" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+        <circle cx="62" cy="44" r="4" fill="currentColor" />
+        <circle cx="80" cy="52" r="4" fill="currentColor" />
+        <circle cx="100" cy="36" r="4" fill="currentColor" />
+      </svg>
+      <h1 class="mb-4 text-4xl font-bold text-gray-900">Projects</h1>
+      <p class="max-w-2xl text-xl text-gray-600">
+        Here is a selection of tools, resources, and apps I've built or contributed to.
+      </p>
+    </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {projects.map((project) => (

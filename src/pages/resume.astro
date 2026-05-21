@@ -8,14 +8,19 @@ const baseUrl = basePath.endsWith('/') ? basePath : basePath + '/';
 <BaseLayout title="Resume - Moi">
   <div class="container-custom py-16">
     <div class="max-w-5xl mx-auto space-y-8">
-      <div class="bg-white p-8 md:p-10 rounded-xl shadow-sm border border-gray-100">
+      <div class="surface-soft relative overflow-hidden p-8 md:p-10">
+        <svg class="page-sketch right-6 top-6 hidden h-24 w-24 md:block" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+          <path d="M24 16H56L72 32V72H24V16Z" stroke="currentColor" stroke-width="3" stroke-linejoin="round" />
+          <path d="M56 16V32H72" stroke="currentColor" stroke-width="3" stroke-linejoin="round" />
+          <path d="M34 44H62M34 56H62" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+        </svg>
         <h1 class="text-4xl font-bold text-gray-900 mb-3">Resume</h1>
         <p class="text-lg text-gray-700">
           A snapshot of my training, research, teaching, and technical practice across bioinformatics and computational biology.
         </p>
       </div>
 
-      <section class="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+      <section class="surface-card p-8">
         <h2 class="text-2xl font-bold text-gray-900 mb-6">Education</h2>
         <div class="space-y-8">
           <div>
@@ -25,10 +30,10 @@ const baseUrl = basePath.endsWith('/') ? basePath : basePath + '/';
               <li>Research focused on single-cell transcriptomics, interpretable latent spaces, and trajectory inference.</li>
               <li>Developing computational methods for modelling cellular progression and functional similarity in large-scale single-cell datasets.</li>
               <li>
-                Developed <a href={`${baseUrl}projects/pseudotime-prediction/`} class="text-indigo-600 hover:underline">PathPinpointR</a>, an R package for predicting cellular progression along predefined reference trajectories using switching genes as progression checkpoints.
+                Developed <a href={`${baseUrl}projects/pseudotime-prediction/`} class="accent-link hover:underline">PathPinpointR</a>, an R package for predicting cellular progression along predefined reference trajectories using switching genes as progression checkpoints.
               </li>
               <li>
-                Worked on <a href={`${baseUrl}projects/novel-gene-expression/`} class="text-indigo-600 hover:underline">affinityVAE</a> and related variational autoencoder (VAE) approaches for analysing high-dimensional single-cell transcriptomic data, including datasets containing hundreds of thousands of cells.
+                Worked on <a href={`${baseUrl}projects/novel-gene-expression/`} class="accent-link hover:underline">affinityVAE</a> and related variational autoencoder (VAE) approaches for analysing high-dimensional single-cell transcriptomic data, including datasets containing hundreds of thousands of cells.
               </li>
               <li>Extensive experience using high-performance computing (HPC) systems for large-scale bioinformatic analyses and model training.</li>
               <li>Regular use of Linux environments, Git, Conda, Apptainer/Singularity, and remote development workflows through VS Code.</li>
@@ -42,10 +47,10 @@ const baseUrl = basePath.endsWith('/') ? basePath : basePath + '/';
             <p class="text-sm text-gray-500 mb-4">September 2018 – May 2022</p>
             <ul class="list-disc pl-6 space-y-2 text-gray-700">
               <li>
-                Completed a research internship focused on <a href={`${baseUrl}projects/honey-bee-methylation/`} class="text-indigo-600 hover:underline">honeybee methylation</a>, biology, and behaviour.
+                Completed a research internship focused on <a href={`${baseUrl}projects/honey-bee-methylation/`} class="accent-link hover:underline">honeybee methylation</a>, biology, and behaviour.
               </li>
               <li>
-                Undertook the <a href={`${baseUrl}projects/phage-classification/`} class="text-indigo-600 hover:underline">TaxMyPhage</a> third-year research project involving bacteriophage genomics and annotation.
+                Undertook the <a href={`${baseUrl}projects/phage-classification/`} class="accent-link hover:underline">TaxMyPhage</a> third-year research project involving bacteriophage genomics and annotation.
               </li>
               <li>Developed practical laboratory and biological data analysis skills across molecular biology, genetics, microbiology, and ecology.</li>
             </ul>
@@ -53,7 +58,7 @@ const baseUrl = basePath.endsWith('/') ? basePath : basePath + '/';
         </div>
       </section>
 
-      <section class="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+      <section class="surface-card p-8">
         <h2 class="text-2xl font-bold text-gray-900 mb-6">Research and Technical Experience</h2>
         <div>
           <h3 class="text-xl font-semibold text-gray-900">HPC and Research Software Engineering Experience Programme — Imperial College London</h3>
@@ -65,7 +70,7 @@ const baseUrl = basePath.endsWith('/') ? basePath : basePath + '/';
         </div>
       </section>
 
-      <section class="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+      <section class="surface-card p-8">
         <h2 class="text-2xl font-bold text-gray-900 mb-6">Teaching, Demonstrating, and Training Experience</h2>
         <div class="space-y-8">
           <div>
@@ -102,26 +107,26 @@ const baseUrl = basePath.endsWith('/') ? basePath : basePath + '/';
         </div>
       </section>
 
-      <section class="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+      <section class="surface-card p-8">
         <h2 class="text-2xl font-bold text-gray-900 mb-6">Technical Skills</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-700">
-          <div class="rounded-lg border border-gray-200 p-4">
+          <div class="rounded-[1.5rem] border border-sage-200 bg-white/65 p-4">
             <h3 class="font-semibold text-gray-900 mb-2">Programming languages</h3>
             <p>R, Python, Bash</p>
           </div>
-          <div class="rounded-lg border border-gray-200 p-4">
+          <div class="rounded-[1.5rem] border border-sage-200 bg-white/65 p-4">
             <h3 class="font-semibold text-gray-900 mb-2">Bioinformatics and data science</h3>
             <p>Single-cell transcriptomics, trajectory inference, dimensionality reduction, statistical modelling, machine learning</p>
           </div>
-          <div class="rounded-lg border border-gray-200 p-4">
+          <div class="rounded-[1.5rem] border border-sage-200 bg-white/65 p-4">
             <h3 class="font-semibold text-gray-900 mb-2">Frameworks and tools</h3>
             <p>Scanpy, Seurat, Git, Conda, Apptainer/Singularity, VS Code, Linux, HPC systems</p>
           </div>
-          <div class="rounded-lg border border-gray-200 p-4">
+          <div class="rounded-[1.5rem] border border-sage-200 bg-white/65 p-4">
             <h3 class="font-semibold text-gray-900 mb-2">Computational methods</h3>
             <p>Variational autoencoders (VAEs), data visualisation, reproducible workflows, large-scale transcriptomic analysis</p>
           </div>
-          <div class="rounded-lg border border-gray-200 p-4 md:col-span-2">
+          <div class="rounded-[1.5rem] border border-sage-200 bg-white/65 p-4 md:col-span-2">
             <h3 class="font-semibold text-gray-900 mb-2">Teaching and communication</h3>
             <p>Scientific demonstrating, technical training, workshop support, online and in-person instruction</p>
           </div>
