@@ -67,20 +67,35 @@ const typeColors: Record<typeof type, string> = {
     </div>
   )}
   
-  <div class="mt-auto flex gap-3 border-t border-sage-200/80 pt-4">
+  <div class="mt-auto flex flex-wrap gap-3 border-t border-sage-200/80 pt-4">
     {urls.github && (
-      <a href={urls.github} target="_blank" rel="noopener noreferrer" class="accent-link text-sm">
-        GitHub
+      <a
+        href={urls.github}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-1 rounded-full border border-sage-300 bg-white/80 px-3 py-1.5 text-sm font-medium text-sage-700 transition-colors duration-200 hover:border-sage-500 hover:bg-sage-50 hover:text-sage-800"
+      >
+        Open GitHub ↗
       </a>
     )}
     {urls.website && (
-      <a href={urls.website} target="_blank" rel="noopener noreferrer" class="accent-link text-sm">
-        Website
+      <a
+        href={urls.website}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-1 rounded-full border border-sage-300 bg-white/80 px-3 py-1.5 text-sm font-medium text-sage-700 transition-colors duration-200 hover:border-sage-500 hover:bg-sage-50 hover:text-sage-800"
+      >
+        Open Website ↗
       </a>
     )}
     {urls.paper && (
-      <a href={urls.paper} target="_blank" rel="noopener noreferrer" class="accent-link text-sm">
-        Paper
+      <a
+        href={urls.paper}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-1 rounded-full border border-sage-300 bg-white/80 px-3 py-1.5 text-sm font-medium text-sage-700 transition-colors duration-200 hover:border-sage-500 hover:bg-sage-50 hover:text-sage-800"
+      >
+        Open Paper ↗
       </a>
     )}
   </div>
