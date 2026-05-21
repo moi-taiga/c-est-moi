@@ -21,14 +21,14 @@ const basePath = import.meta.env.BASE_URL;
 const baseUrl = basePath.endsWith('/') ? basePath : basePath + '/';
 
 const typeColors: Record<typeof type, string> = {
-  dataset: 'bg-blue-100 text-blue-800',
-  tool: 'bg-green-100 text-green-800',
-  resource: 'bg-purple-100 text-purple-800',
-  app: 'bg-pink-100 text-pink-800'
+  dataset: 'bg-sage-100 text-sage-700',
+  tool: 'bg-sage-200 text-sage-700',
+  resource: 'bg-sage-300 text-sage-800',
+  app: 'bg-white text-sage-700 border border-sage-200'
 };
 ---
 
-<div class="card group flex flex-col h-full bg-white rounded-xl shadow-sm hover:shadow-md transition p-5 border border-gray-100">
+<div class="card group flex h-full flex-col overflow-hidden p-5">
   <div class="flex items-start justify-between mb-3">
     <div class="flex items-center space-x-2">
       <span class={`px-2 py-1 text-xs font-medium rounded-full ${typeColors[type] || 'bg-gray-100 text-gray-800'}`}>
@@ -39,7 +39,7 @@ const typeColors: Record<typeof type, string> = {
   </div>
   
   {image && (
-    <div class="aspect-w-16 aspect-h-9 mb-4 overflow-hidden rounded-lg bg-gray-100">
+    <div class="aspect-w-16 aspect-h-9 mb-4 overflow-hidden rounded-[1.25rem] bg-sage-100/70">
       <img 
         src={`${baseUrl}${image.replace(/^\//, '')}`} 
         alt={imageAlt || title}
@@ -52,34 +52,34 @@ const typeColors: Record<typeof type, string> = {
     <a href={`${baseUrl}projects/${slug}/`}>{title}</a>
   </h3>
   
-  <p class="text-gray-600 text-sm leading-relaxed mb-4 flex-grow">
+  <p class="mb-4 flex-grow text-sm leading-relaxed text-gray-600">
     {description}
   </p>
   
   {tags && tags.length > 0 && (
     <div class="flex flex-wrap gap-2 mb-4">
       {tags.slice(0, 3).map(tag => (
-        <span class="tag text-xs px-2 py-1 bg-gray-100 rounded text-gray-600">{tag}</span>
+        <span class="tag text-xs px-2 py-1">{tag}</span>
       ))}
       {tags.length > 3 && (
-        <span class="tag text-xs px-2 py-1 bg-gray-100 rounded text-gray-600">+{tags.length - 3}</span>
+        <span class="tag text-xs px-2 py-1">+{tags.length - 3}</span>
       )}
     </div>
   )}
   
-  <div class="flex gap-3 mt-auto pt-4 border-t border-gray-100">
+  <div class="mt-auto flex gap-3 border-t border-sage-200/80 pt-4">
     {urls.github && (
-      <a href={urls.github} target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-indigo-600 hover:text-indigo-800">
+      <a href={urls.github} target="_blank" rel="noopener noreferrer" class="accent-link text-sm">
         GitHub
       </a>
     )}
     {urls.website && (
-      <a href={urls.website} target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-indigo-600 hover:text-indigo-800">
+      <a href={urls.website} target="_blank" rel="noopener noreferrer" class="accent-link text-sm">
         Website
       </a>
     )}
     {urls.paper && (
-      <a href={urls.paper} target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-indigo-600 hover:text-indigo-800">
+      <a href={urls.paper} target="_blank" rel="noopener noreferrer" class="accent-link text-sm">
         Paper
       </a>
     )}

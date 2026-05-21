@@ -4,31 +4,50 @@ const baseUrl = import.meta.env.BASE_URL;
 const basePath = baseUrl.endsWith('/') ? baseUrl : baseUrl + '/';
 ---
 
-<section class="relative h-[80vh] flex items-center justify-center overflow-hidden bg-gray-900">
-  <!-- Background Image - Placeholder -->
+<section class="relative flex min-h-[82vh] items-center justify-center overflow-hidden bg-tekhelet">
   <div class="absolute inset-0 z-0">
-    <div class="w-full h-full bg-gradient-to-br from-indigo-900 to-purple-800"></div>
-    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+    <div class="h-full w-full bg-[radial-gradient(circle_at_top_left,_rgba(233,245,219,0.45),_transparent_30%),radial-gradient(circle_at_bottom_right,_rgba(255,255,255,0.12),_transparent_26%),linear-gradient(135deg,#718355_0%,#87986a_48%,#97a97c_100%)]"></div>
+    <div class="absolute inset-0 bg-[linear-gradient(180deg,rgba(54,64,42,0.08),rgba(54,64,42,0.58))]"></div>
+    <svg class="absolute -left-12 top-16 hidden h-80 w-80 text-babyBlue/50 lg:block" viewBox="0 0 240 240" fill="none" aria-hidden="true">
+      <path d="M84 24C40 66 38 170 84 214" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+      <path d="M156 24C110 66 112 170 156 214" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+      <path d="M84 48C120 86 120 150 156 188" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+      <path d="M156 48C120 86 120 150 84 188" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+      <path d="M92 62H148M82 100H158M92 138H148M82 176H158" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+    </svg>
+    <svg class="absolute -right-10 top-24 hidden h-72 w-72 text-white/30 xl:block" viewBox="0 0 220 220" fill="none" aria-hidden="true">
+      <path d="M78 54L46 110L78 166" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M142 54L174 110L142 166" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M92 82H136M86 110H146M92 138H126" stroke="currentColor" stroke-width="4" stroke-linecap="round" />
+      <circle cx="154" cy="82" r="5" fill="currentColor" />
+      <circle cx="134" cy="138" r="5" fill="currentColor" />
+    </svg>
+    <div class="absolute -bottom-24 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full bg-babyBlue/20 blur-3xl"></div>
   </div>
   
   <!-- Hero Content -->
-  <div class="relative z-20 text-center text-white px-4 max-w-4xl mx-auto mt-16">
-    <h1 class="text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
-      Hi, I'm Moi
-    </h1>
-    <p class="text-xl md:text-3xl mb-4 opacity-95 font-light animate-slide-up" style="animation-delay: 0.2s;">
-      PhD Student • Coder • Climbing Instructor
-    </p>
-    <p class="text-lg md:text-xl opacity-80 mt-8 max-w-2xl mx-auto animate-slide-up" style="animation-delay: 0.4s;">
-      I explore the intersection of data, biology, and computation, build tools to solve complex problems, and teach people how to scale walls safely.
-    </p>
-    <div class="mt-10 flex gap-4 justify-center animate-slide-up" style="animation-delay: 0.6s;">
-      <a href={`${basePath}about/`} class="px-6 py-3 bg-white text-indigo-900 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
-        More About Me
-      </a>
-      <a href={`${basePath}projects/`} class="px-6 py-3 border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-indigo-900 transition-colors">
-        View My Work
-      </a>
+  <div class="relative z-20 mx-auto mt-16 max-w-4xl px-4 text-center text-white">
+    <div class="surface-card border border-white/20 bg-white/10 px-8 py-12 text-white shadow-2xl shadow-sage-900/20">
+      <p class="mb-4 inline-flex rounded-full border border-white/15 bg-white/10 px-4 py-1 text-sm uppercase tracking-[0.24em] text-babyBlue">
+        Biology • Code • Climbing
+      </p>
+      <h1 class="mb-6 text-5xl font-bold text-white md:text-7xl animate-fade-in">
+        Hi, I'm Moi
+      </h1>
+      <p class="mb-4 text-xl font-light opacity-95 md:text-3xl animate-slide-up" style="animation-delay: 0.2s;">
+        PhD Student • Coder • Climbing Instructor
+      </p>
+      <p class="mx-auto mt-8 max-w-2xl text-lg text-white/85 md:text-xl animate-slide-up" style="animation-delay: 0.4s;">
+        I explore the intersection of data, biology, and computation, build tools to solve complex problems, and teach people how to scale walls safely.
+      </p>
+      <div class="mt-10 flex flex-col justify-center gap-4 sm:flex-row animate-slide-up" style="animation-delay: 0.6s;">
+        <a href={`${basePath}about/`} class="btn-secondary">
+          More About Me
+        </a>
+        <a href={`${basePath}projects/`} class="btn-primary border border-white/10">
+          View My Work
+        </a>
+      </div>
     </div>
   </div>
   
