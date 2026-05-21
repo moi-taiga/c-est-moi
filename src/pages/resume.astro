@@ -1,5 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const basePath = import.meta.env.BASE_URL;
+const baseUrl = basePath.endsWith('/') ? basePath : basePath + '/';
 ---
 
 <BaseLayout title="Resume - Moi">
@@ -21,8 +24,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <ul class="list-disc pl-6 space-y-2 text-gray-700">
               <li>Research focused on single-cell transcriptomics, interpretable latent spaces, and trajectory inference.</li>
               <li>Developing computational methods for modelling cellular progression and functional similarity in large-scale single-cell datasets.</li>
-              <li>Developed PathPinpointR, an R package for predicting cellular progression along predefined reference trajectories using switching genes as progression checkpoints.</li>
-              <li>Worked on variational autoencoder (VAE) approaches for analysing high-dimensional single-cell transcriptomic data, including datasets containing hundreds of thousands of cells.</li>
+              <li>
+                Developed <a href={`${baseUrl}projects/pseudotime-prediction/`} class="text-indigo-600 hover:underline">PathPinpointR</a>, an R package for predicting cellular progression along predefined reference trajectories using switching genes as progression checkpoints.
+              </li>
+              <li>
+                Worked on <a href={`${baseUrl}projects/novel-gene-expression/`} class="text-indigo-600 hover:underline">affinityVAE</a> and related variational autoencoder (VAE) approaches for analysing high-dimensional single-cell transcriptomic data, including datasets containing hundreds of thousands of cells.
+              </li>
               <li>Extensive experience using high-performance computing (HPC) systems for large-scale bioinformatic analyses and model training.</li>
               <li>Regular use of Linux environments, Git, Conda, Apptainer/Singularity, and remote development workflows through VS Code.</li>
               <li>Programming in R, Python, and Bash.</li>
@@ -34,8 +41,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <h3 class="text-xl font-semibold text-gray-900">BSc Biological Sciences — University of Leicester</h3>
             <p class="text-sm text-gray-500 mb-4">September 2018 – May 2022</p>
             <ul class="list-disc pl-6 space-y-2 text-gray-700">
-              <li>Completed a research internship focused on honeybee biology and behaviour.</li>
-              <li>Undertook the TaxMyPhage third-year research project involving bacteriophage genomics and annotation.</li>
+              <li>
+                Completed a research internship focused on <a href={`${baseUrl}projects/honey-bee-methylation/`} class="text-indigo-600 hover:underline">honeybee methylation</a>, biology, and behaviour.
+              </li>
+              <li>
+                Undertook the <a href={`${baseUrl}projects/phage-classification/`} class="text-indigo-600 hover:underline">TaxMyPhage</a> third-year research project involving bacteriophage genomics and annotation.
+              </li>
               <li>Developed practical laboratory and biological data analysis skills across molecular biology, genetics, microbiology, and ecology.</li>
             </ul>
           </div>
