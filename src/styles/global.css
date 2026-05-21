@@ -5,11 +5,11 @@
 @tailwind utilities;
 
 :root {
-  --skyMagenta: #97a97c;
-  --tekhelet: #718355;
-  --bittersweet: #cfe1b9;
-  --babyBlue: #e9f5db;
-  --tropicalIndigo: #b5c99a;
+  --sage-pale: #e9f5db;
+  --sage-light: #cfe1b9;
+  --sage-mid: #b5c99a;
+  --sage-accent: #97a97c;
+  --sage-deep: #718355;
   --brand-primary: #718355;
   --brand-accent: #97a97c;
   --brand-soft: #e9f5db;
@@ -72,7 +72,7 @@
   
   /* Focus styles for accessibility */
   *:focus {
-    @apply outline-none ring-2 ring-skyMagenta ring-offset-2;
+    @apply outline-none ring-2 ring-sage-400 ring-offset-2;
   }
   
   /* Reduced motion support */
@@ -96,7 +96,7 @@
     background: linear-gradient(135deg, #718355 0%, #87986a 100%);
     color: #f8fbf4;
     box-shadow: 0 18px 30px -20px rgba(54, 64, 42, 0.9);
-    @apply btn focus:ring-skyMagenta;
+    @apply btn focus:ring-sage-400;
   }
 
   .btn-primary:hover {
@@ -109,7 +109,7 @@
     background: rgba(255, 255, 255, 0.72);
     color: #5e6d49;
     border: 1px solid rgba(233, 245, 219, 0.35);
-    @apply btn focus:ring-tekhelet;
+    @apply btn focus:ring-sage-600;
   }
 
   .btn-secondary:hover {
