@@ -1,0 +1,121 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Resume - Moi">
+  <div class="container-custom py-16">
+    <div class="max-w-5xl mx-auto space-y-8">
+      <div class="bg-white p-8 md:p-10 rounded-xl shadow-sm border border-gray-100">
+        <h1 class="text-4xl font-bold text-gray-900 mb-3">Resume</h1>
+        <p class="text-lg text-gray-700">
+          A snapshot of my training, research, teaching, and technical practice across bioinformatics and computational biology.
+        </p>
+      </div>
+
+      <section class="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">Education</h2>
+        <div class="space-y-8">
+          <div>
+            <h3 class="text-xl font-semibold text-gray-900">PhD in Bioinformatics — University of Southampton</h3>
+            <p class="text-sm text-gray-500 mb-4">July 2022 – January 2027 (expected)</p>
+            <ul class="list-disc pl-6 space-y-2 text-gray-700">
+              <li>Research focused on single-cell transcriptomics, interpretable latent spaces, and trajectory inference.</li>
+              <li>Developing computational methods for modelling cellular progression and functional similarity in large-scale single-cell datasets.</li>
+              <li>Developed PathPinpointR, an R package for predicting cellular progression along predefined reference trajectories using switching genes as progression checkpoints.</li>
+              <li>Worked on variational autoencoder (VAE) approaches for analysing high-dimensional single-cell transcriptomic data, including datasets containing hundreds of thousands of cells.</li>
+              <li>Extensive experience using high-performance computing (HPC) systems for large-scale bioinformatic analyses and model training.</li>
+              <li>Regular use of Linux environments, Git, Conda, Apptainer/Singularity, and remote development workflows through VS Code.</li>
+              <li>Programming in R, Python, and Bash.</li>
+              <li>Experience with single-cell analysis frameworks including Scanpy and Seurat.</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-xl font-semibold text-gray-900">BSc Biological Sciences — University of Leicester</h3>
+            <p class="text-sm text-gray-500 mb-4">September 2018 – May 2022</p>
+            <ul class="list-disc pl-6 space-y-2 text-gray-700">
+              <li>Completed a research internship focused on honeybee biology and behaviour.</li>
+              <li>Undertook the TaxMyPhage third-year research project involving bacteriophage genomics and annotation.</li>
+              <li>Developed practical laboratory and biological data analysis skills across molecular biology, genetics, microbiology, and ecology.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">Research and Technical Experience</h2>
+        <div>
+          <h3 class="text-xl font-semibold text-gray-900">HPC and Research Software Engineering Experience Programme — Imperial College London</h3>
+          <p class="text-sm text-gray-500 mb-4">July 2026</p>
+          <ul class="list-disc pl-6 space-y-2 text-gray-700">
+            <li>Training and practical experience in high-performance computing (HPC), research software engineering, and reproducible computational workflows.</li>
+            <li>Exposure to collaborative software development practices, scientific infrastructure, and scalable computational research environments.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">Teaching, Demonstrating, and Training Experience</h2>
+        <div class="space-y-8">
+          <div>
+            <h3 class="text-xl font-semibold text-gray-900">Bangor University</h3>
+            <p class="font-medium text-gray-700 mb-3">Undergraduate Demonstrator and Marker</p>
+            <ul class="list-disc pl-6 space-y-2 text-gray-700">
+              <li>Supported undergraduate teaching across a range of biological science practicals and workshops.</li>
+              <li>Assisted students during in-person laboratory sessions and practical classes.</li>
+              <li>Contributed to coursework assessment and marking.</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-xl font-semibold text-gray-900">University of Southampton</h3>
+            <p class="font-medium text-gray-700 mb-3">Bioinformatics Demonstrator and Marker</p>
+            <ul class="list-disc pl-6 space-y-2 text-gray-700">
+              <li>Supported undergraduate and postgraduate teaching in bioinformatics and computational biology.</li>
+              <li>Assisted students with coding, data analysis, and interpretation of biological datasets.</li>
+              <li>Delivered support during both online and in-person teaching sessions.</li>
+              <li>Contributed to coursework marking and student feedback.</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-xl font-semibold text-gray-900">University of Southampton Research Software Engineering Team</h3>
+            <p class="font-medium text-gray-700 mb-3">Training and Course Support</p>
+            <ul class="list-disc pl-6 space-y-2 text-gray-700">
+              <li>Assisted with the delivery of software and data analysis training courses.</li>
+              <li>Delivered teaching sessions on data visualisation in R.</li>
+              <li>Supported learners with varying computational backgrounds in both online and in-person formats.</li>
+              <li>Contributed to training focused on reproducible research and computational workflows.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">Technical Skills</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-700">
+          <div class="rounded-lg border border-gray-200 p-4">
+            <h3 class="font-semibold text-gray-900 mb-2">Programming languages</h3>
+            <p>R, Python, Bash</p>
+          </div>
+          <div class="rounded-lg border border-gray-200 p-4">
+            <h3 class="font-semibold text-gray-900 mb-2">Bioinformatics and data science</h3>
+            <p>Single-cell transcriptomics, trajectory inference, dimensionality reduction, statistical modelling, machine learning</p>
+          </div>
+          <div class="rounded-lg border border-gray-200 p-4">
+            <h3 class="font-semibold text-gray-900 mb-2">Frameworks and tools</h3>
+            <p>Scanpy, Seurat, Git, Conda, Apptainer/Singularity, VS Code, Linux, HPC systems</p>
+          </div>
+          <div class="rounded-lg border border-gray-200 p-4">
+            <h3 class="font-semibold text-gray-900 mb-2">Computational methods</h3>
+            <p>Variational autoencoders (VAEs), data visualisation, reproducible workflows, large-scale transcriptomic analysis</p>
+          </div>
+          <div class="rounded-lg border border-gray-200 p-4 md:col-span-2">
+            <h3 class="font-semibold text-gray-900 mb-2">Teaching and communication</h3>
+            <p>Scientific demonstrating, technical training, workshop support, online and in-person instruction</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</BaseLayout>
