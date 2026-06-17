@@ -34,11 +34,17 @@ const basePath = baseUrl.endsWith('/') ? baseUrl : baseUrl + '/';
         I explore the intersection of data, biology, and computation, build tools to solve complex problems, and teach people how to scale walls safely.
       </p>
       <div class="mt-10 flex flex-col justify-center gap-4 sm:flex-row animate-slide-up" style="animation-delay: 0.6s;">
-        <a href={`${basePath}about/`} class="btn-secondary">
+        <a href="#about"
+           class="inline-flex cursor-pointer select-none items-center justify-center rounded-full border-2 border-white/70 bg-white/15 px-8 py-3 text-sm font-semibold tracking-wide text-white shadow-lg backdrop-blur-sm transition-all duration-200 hover:-translate-y-1 hover:border-white hover:bg-white/25 hover:shadow-xl active:translate-y-0">
           More About Me
         </a>
-        <a href={`${basePath}projects/`} class="btn-primary border border-white/10">
+        <a href={`${basePath}projects/`}
+           class="inline-flex cursor-pointer select-none items-center justify-center rounded-full border-2 border-transparent bg-white px-8 py-3 text-sm font-semibold tracking-wide text-sage-800 shadow-lg transition-all duration-200 hover:-translate-y-1 hover:bg-sage-50 hover:shadow-xl active:translate-y-0">
           View My Work
+        </a>
+        <a href={`${basePath}climbing/`}
+           class="inline-flex cursor-pointer select-none items-center justify-center rounded-full border-2 border-white/70 bg-white/15 px-8 py-3 text-sm font-semibold tracking-wide text-white shadow-lg backdrop-blur-sm transition-all duration-200 hover:-translate-y-1 hover:border-white hover:bg-white/25 hover:shadow-xl active:translate-y-0">
+          🧗 Climbing
         </a>
       </div>
     </div>
