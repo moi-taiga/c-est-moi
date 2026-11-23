@@ -1,40 +1,31 @@
 ---
+import type { CollectionEntry } from 'astro:content';
+import ProjectBadges from './ProjectBadges.astro';
+import ProjectLinks from './ProjectLinks.astro';
+
+type ProjectData = CollectionEntry<'projects'>['data'];
+
 export interface Props {
   title: string;
-  type: 'dataset' | 'tool' | 'resource' | 'app';
+  type: ProjectData['type'];
   description: string;
   image?: string;
   imageAlt?: string;
   tags?: string[];
-  urls?: {
-    github?: string;
-    paper?: string;
-    website?: string;
-    viewer?: string;
-  };
-  status?: string;
+  urls?: ProjectData['urls'];
+  status?: ProjectData['status'];
   slug: string;
 }
 
-const { title, type, description, image, imageAlt, tags = [], urls = {}, status, slug } = Astro.props;
+const { title, type, description, image, imageAlt, tags = [], urls, status, slug } = Astro.props;
 const basePath = import.meta.env.BASE_URL;
 const baseUrl = basePath.endsWith('/') ? basePath : basePath + '/';
-
-const typeColors: Record<typeof type, string> = {
-  dataset: 'bg-sage-100 text-sage-700',
-  tool: 'bg-sage-200 text-sage-700',
-  resource: 'bg-sage-300 text-sage-800',
-  app: 'bg-white text-sage-700 border border-sage-200'
-};
 ---
 
 <div class="card group flex h-full flex-col overflow-hidden p-5">
   <div class="flex items-start justify-between mb-3">
     <div class="flex items-center space-x-2">
-      <span class={`px-2 py-1 text-xs font-medium rounded-full ${typeColors[type] || 'bg-gray-100 text-gray-800'}`}>
-        {type}
-      </span>
-      {status === 'archived' && <span class="px-2 py-1 text-xs font-medium rounded-full bg-red-100 text-red-800">archived</span>}
+      <ProjectBadges type={type} status={status} />
     </div>
   </div>
   
@@ -68,35 +59,6 @@ const typeColors: Record<typeof type, string> = {
   )}
   
   <div class="mt-auto flex flex-wrap gap-3 border-t border-sage-200/80 pt-4">
-    {urls.github && (
-      <a
-        href={urls.github}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-flex items-center gap-1 rounded-full border border-sage-300 bg-white/80 px-3 py-1.5 text-sm font-medium text-sage-700 transition-colors duration-200 hover:border-sage-500 hover:bg-sage-50 hover:text-sage-800"
-      >
-        Open GitHub ↗
-      </a>
-    )}
-    {urls.website && (
-      <a
-        href={urls.website}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-flex items-center gap-1 rounded-full border border-sage-300 bg-white/80 px-3 py-1.5 text-sm font-medium text-sage-700 transition-colors duration-200 hover:border-sage-500 hover:bg-sage-50 hover:text-sage-800"
-      >
-        Open Website ↗
-      </a>
-    )}
-    {urls.paper && (
-      <a
-        href={urls.paper}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-flex items-center gap-1 rounded-full border border-sage-300 bg-white/80 px-3 py-1.5 text-sm font-medium text-sage-700 transition-colors duration-200 hover:border-sage-500 hover:bg-sage-50 hover:text-sage-800"
-      >
-        Open Paper ↗
-      </a>
-    )}
+    <ProjectLinks urls={urls} size="sm" />
   </div>
 </div>

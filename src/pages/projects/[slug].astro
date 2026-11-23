@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectBadges from '../../components/ProjectBadges.astro';
+import ProjectLinks from '../../components/ProjectLinks.astro';
 import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -16,13 +18,7 @@ const { title, type, description, image, imageAlt, tags, urls, status, role } = 
 
 const basePath = import.meta.env.BASE_URL;
 const baseUrl = basePath.endsWith('/') ? basePath : basePath + '/';
-
-const typeColors: Record<string, string> = {
-  dataset: 'bg-sage-100 text-sage-700',
-  tool: 'bg-sage-200 text-sage-700',
-  resource: 'bg-sage-300 text-sage-800',
-  app: 'border border-sage-200 bg-white text-sage-700',
-};
+const hasLinks = Boolean(urls && Object.values(urls).some(Boolean));
 ---
 
 <BaseLayout title={`${title} - Moi`} description={description}>
@@ -36,12 +32,7 @@ const typeColors: Record<string, string> = {
       <!-- Header -->
       <div class="surface-soft mb-8 px-8 py-8">
         <div class="flex items-center gap-3 mb-4">
-          <span class={`px-2 py-1 text-xs font-medium rounded-full ${typeColors[type] || 'bg-gray-100 text-gray-800'}`}>
-            {type}
-          </span>
-          {status === 'archived' && (
-            <span class="px-2 py-1 text-xs font-medium rounded-full bg-red-100 text-red-800">archived</span>
-          )}
+          <ProjectBadges type={type} status={status} />
         </div>
         <h1 class="text-4xl font-bold text-gray-900 mb-4">{title}</h1>
         <p class="text-xl text-gray-600">{description}</p>
@@ -71,32 +62,9 @@ const typeColors: Record<string, string> = {
       )}
 
       <!-- Links -->
-      {urls && (
+      {hasLinks && (
         <div class="mb-10 flex flex-wrap gap-4 border-b border-sage-200 pb-8">
-          {urls.github && (
-            <a href={urls.github} target="_blank" rel="noopener noreferrer"
-               class="inline-flex items-center gap-1 rounded-full border border-sage-300 bg-white px-4 py-2 text-sm font-medium text-sage-700 transition-colors duration-200 hover:border-sage-500 hover:bg-sage-50 hover:text-sage-800">
-              Open GitHub ↗
-            </a>
-          )}
-          {urls.paper && (
-            <a href={urls.paper} target="_blank" rel="noopener noreferrer"
-               class="inline-flex items-center gap-1 rounded-full border border-sage-300 bg-white px-4 py-2 text-sm font-medium text-sage-700 transition-colors duration-200 hover:border-sage-500 hover:bg-sage-50 hover:text-sage-800">
-              Open Paper ↗
-            </a>
-          )}
-          {urls.website && (
-            <a href={urls.website} target="_blank" rel="noopener noreferrer"
-               class="inline-flex items-center gap-1 rounded-full border border-sage-300 bg-white px-4 py-2 text-sm font-medium text-sage-700 transition-colors duration-200 hover:border-sage-500 hover:bg-sage-50 hover:text-sage-800">
-              Open Website ↗
-            </a>
-          )}
-          {urls.viewer && (
-            <a href={urls.viewer} target="_blank" rel="noopener noreferrer"
-               class="inline-flex items-center gap-1 rounded-full border border-sage-300 bg-white px-4 py-2 text-sm font-medium text-sage-700 transition-colors duration-200 hover:border-sage-500 hover:bg-sage-50 hover:text-sage-800">
-              Open Viewer ↗
-            </a>
-          )}
+          <ProjectLinks urls={urls} size="md" />
         </div>
       )}
 

@@ -1,6 +1,6 @@
 # Agent Instructions
 
-Personal website and blog built with Astro, Tailwind CSS, and TypeScript. Content is markdown-first and lives in `content/`. See [`README.md`](README.md) for structure and commands.
+Personal website and blog built with Astro, Tailwind CSS, and TypeScript. Content is markdown-first and lives in `src/content/`. See [`README.md`](README.md) for structure and commands.
 
 Shared agent instructions and skills live in [`.agents/`](.agents/README.md).
 

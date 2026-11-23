@@ -1,4 +1,5 @@
 ---
+import '@fontsource-variable/inter';
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -7,12 +8,33 @@ export interface Props {
   title: string;
   description?: string;
   image?: string;
+  /** Ask search engines not to index this page (e.g. the 404 page). */
+  noindex?: boolean;
 }
 
-const { title, description = "Data-Driven Network Biology Group at the University of Southampton", image = "/og/default-og.jpg" } = Astro.props;
+const {
+  title,
+  description = "Moi's personal site: computational biologist, research software engineer and climbing instructor. Projects, CV, climbing and blog.",
+  image = "/og/default-og.jpg",
+  noindex = false,
+} = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const basePath = import.meta.env.BASE_URL;
 const baseUrl = basePath.endsWith('/') ? basePath : basePath + '/';
+const homeURL = new URL(baseUrl, Astro.site);
+
+// Structured data so search engines know who the site is about
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Moi',
+  url: homeURL.href,
+  jobTitle: 'Computational Biologist',
+  sameAs: [
+    'https://github.com/moi-taiga',
+    'https://scholar.google.com/citations?user=GW4LV6YAAAAJ',
+  ],
+};
 ---
 
 <!DOCTYPE html>
@@ -22,46 +44,30 @@ const baseUrl = basePath.endsWith('/') ? basePath : basePath + '/';
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href={`${baseUrl}favicon.svg`} />
+    <link rel="sitemap" href={`${baseUrl}sitemap-index.xml`} />
     <meta name="generator" content={Astro.generator} />
-    
+    {noindex && <meta name="robots" content="noindex" />}
+
     <!-- Canonical URL -->
     <link rel="canonical" href={canonicalURL} />
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={new URL(image, Astro.site)} />
-    
+
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={canonicalURL} />
-    <meta property="twitter:title" content={title} />
-    <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={new URL(image, Astro.site)} />
-    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(image, Astro.site)} />
+
     <!-- Structured Data -->
-    <script type="application/ld+json" is:inline>
-      {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Data-Driven Network Biology Group",
-        "url": "https://www.ddnetbio.com",
-        "logo": "https://www.ddnetbio.com/logo.svg",
-        "description": "Data-driven research spanning single-cell biology, network analysis, and machine learning to understand cellular function and disease mechanisms.",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Southampton",
-          "addressCountry": "UK"
-        },
-        "affiliation": {
-          "@type": "Organization",
-          "name": "University of Southampton"
-        }
-      }
-    </script>
-    
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+
     <title>{title}</title>
   </head>
   <body class="h-full text-gray-900 antialiased">
@@ -74,4 +80,3 @@ const baseUrl = basePath.endsWith('/') ? basePath : basePath + '/';
     </div>
   </body>
 </html>
-

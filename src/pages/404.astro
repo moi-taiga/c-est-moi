@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const basePath = import.meta.env.BASE_URL;
+const baseUrl = basePath.endsWith('/') ? basePath : basePath + '/';
+---
+
+<BaseLayout title="Page not found - Moi" description="Sorry, this page doesn't exist." noindex>
+  <div class="container-custom py-24">
+    <div class="surface-soft mx-auto max-w-2xl px-8 py-12 text-center md:px-12">
+      <p class="mb-2 text-sm font-semibold uppercase tracking-[0.24em] text-sage-600">404</p>
+      <h1 class="mb-4 text-4xl font-bold text-gray-900">Page not found</h1>
+      <p class="mb-8 text-lg text-gray-700">
+        Sorry, this page doesn't exist or may have moved.
+      </p>
+      <a href={baseUrl} class="btn-primary">Go to the home page</a>
+      <p class="mt-8 text-gray-600">
+        Or try my{' '}
+        <a href={`${baseUrl}projects/`} class="accent-link hover:underline">projects</a>,{' '}
+        <a href={`${baseUrl}resume/`} class="accent-link hover:underline">CV</a> or{' '}
+        <a href={`${baseUrl}blog/`} class="accent-link hover:underline">blog</a>.
+      </p>
+    </div>
+  </div>
+</BaseLayout>

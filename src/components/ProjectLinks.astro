@@ -1,0 +1,35 @@
+---
+// External links (GitHub, paper, website, viewer) shown on project cards and project pages
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  urls?: CollectionEntry<'projects'>['data']['urls'];
+  /** 'sm' for cards, 'md' for the project page */
+  size?: 'sm' | 'md';
+}
+
+const { urls = {}, size = 'sm' } = Astro.props;
+
+const links = [
+  { href: urls.github, label: 'Open GitHub' },
+  { href: urls.paper, label: 'Open Paper' },
+  { href: urls.website, label: 'Open Website' },
+  { href: urls.viewer, label: 'Open Viewer' },
+].filter((link): link is { href: string; label: string } => Boolean(link.href));
+
+const sizeClasses = {
+  sm: 'bg-white/80 px-3 py-1.5',
+  md: 'bg-white px-4 py-2',
+};
+---
+
+{links.map(({ href, label }) => (
+  <a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    class={`inline-flex items-center gap-1 rounded-full border border-sage-300 ${sizeClasses[size]} text-sm font-medium text-sage-700 transition-colors duration-200 hover:border-sage-500 hover:bg-sage-50 hover:text-sage-800`}
+  >
+    {label} <span aria-hidden="true">↗</span>
+  </a>
+))}

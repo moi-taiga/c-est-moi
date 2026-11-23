@@ -2,7 +2,7 @@
 
 All written content on this site uses **British English**. This applies to anything a reader will see, including:
 
-- Markdown in `content/` (blog posts, projects, publications)
+- Markdown in `src/content/` (blog posts and projects)
 - Visible text in `src/` (page copy, headings, buttons, navigation, alt text, meta descriptions)
 - Documentation such as `README.md`
 

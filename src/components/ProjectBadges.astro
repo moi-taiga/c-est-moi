@@ -1,0 +1,27 @@
+---
+// Type badge (and "archived" badge) shown on project cards and project pages
+import type { CollectionEntry } from 'astro:content';
+
+type ProjectData = CollectionEntry<'projects'>['data'];
+
+interface Props {
+  type: ProjectData['type'];
+  status?: ProjectData['status'];
+}
+
+const { type, status } = Astro.props;
+
+const typeColours: Record<ProjectData['type'], string> = {
+  dataset: 'bg-sage-100 text-sage-700',
+  tool: 'bg-sage-200 text-sage-700',
+  resource: 'bg-sage-300 text-sage-800',
+  app: 'border border-sage-200 bg-white text-sage-700',
+};
+---
+
+<span class={`px-2 py-1 text-xs font-medium rounded-full ${typeColours[type]}`}>
+  {type}
+</span>
+{status === 'archived' && (
+  <span class="px-2 py-1 text-xs font-medium rounded-full bg-red-100 text-red-800">archived</span>
+)}
