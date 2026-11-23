@@ -11,7 +11,7 @@ now uses GH actions to build and deploy!
 
 ### Prerequisites
 
-- **Node.js 22.x** (required for Astro 4.x compatibility)
+- **Node.js 22.23.4 or later** (Astro 7 minimum; GitHub Actions builds with Node 22)
 - **npm** (comes with Node.js)
 
 ### Local Development
@@ -51,7 +51,6 @@ now uses GH actions to build and deploy!
 │   ├── projects/              # Portfolio items
 │   └── publications/          # Publications and papers
 ├── astro.config.mjs          # Astro configuration
-├── tailwind.config.js        # Tailwind CSS configuration
 └── README.md
 ```
 
@@ -72,7 +71,7 @@ Create a new file `content/publications/your-paper.md` to list a new research pa
 
 ## 🎨 Styling & Branding
 
-The website's design is managed via **Tailwind CSS**. Colours, typography, and utility classes are configured in `tailwind.config.js` and `src/styles/global.css`.
+The website's design is managed via **Tailwind CSS**. Colours, typography, and utility classes are configured in `src/styles/global.css` (Tailwind CSS v4 uses CSS-based configuration via `@theme`).
 
 ## 🛠️ Development Commands
 
