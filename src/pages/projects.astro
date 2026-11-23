@@ -1,9 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProjectCard from '../components/ProjectCard.astro';
-import { getCollection } from 'astro:content';
+import { getSortedProjects } from '../lib/projects';
 
-const projects = await getCollection('projects');
+const projects = await getSortedProjects();
 ---
 
 <BaseLayout title="Projects - Moi">

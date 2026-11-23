@@ -18,6 +18,10 @@ const projects = defineCollection({
     }).optional(),
     tags: z.array(z.string()).optional(),
     status: z.enum(['active', 'maintenance', 'archived']).default('active'),
+    // My role on the project, e.g. "Sole developer"
+    role: z.string().optional(),
+    // Display order (lowest first); projects without one are listed last
+    order: z.number().optional(),
   }),
 });
 

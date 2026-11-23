@@ -2,18 +2,16 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroSection from '../components/HeroSection.astro';
 import ProjectCard from '../components/ProjectCard.astro';
-import { getCollection } from 'astro:content';
+import { getSortedProjects } from '../lib/projects';
 
 const basePath = import.meta.env.BASE_URL;
 const baseUrl = basePath.endsWith('/') ? basePath : basePath + '/';
 
-const projects = await getCollection('projects');
-
-// Optional sorting if we add order/dates later
+const projects = await getSortedProjects();
 const featuredProjects = projects.slice(0, 3);
 ---
 
-<BaseLayout title="Moi - PhD Student, Coder, Climbing Instructor">
+<BaseLayout title="Moi - Computational Biologist, Research Software Engineer, Climbing Instructor">
   <HeroSection />
   
   <!-- Brief Intro Section -->
@@ -39,13 +37,13 @@ const featuredProjects = projects.slice(0, 3);
         <h2 class="mb-6 text-center text-3xl font-bold text-gray-900">About Me</h2>
         
         <div class="prose prose-lg max-w-none text-gray-700">
-          <p>I'm Moi, a PhD student, coder, and climbing instructor.</p>
-          
-          <h3>Academic Background</h3>
-          <p>I focus on data-driven biology and computational methods. My research involves analyzing complex biological datasets and building tools to make sense of them.</p>
+          <p>I'm Moi, a computational biologist, research software engineer, and climbing instructor.</p>
 
-          <h3>Coding</h3>
-          <p>I build web apps, data pipelines, and visualization tools. I'm passionate about open-source software and making research more accessible.</p>
+          <h3>Academic Background</h3>
+          <p>I'm completing a doctorate in computational biology at the University of Southampton, developing new methods to analyse single-cell transcriptomic data with machine learning. Before that, I studied genetics at the University of Leicester.</p>
+
+          <h3>Research Software</h3>
+          <p>I design, build, and deploy research software, from R packages for single-cell trajectory modelling to generative models of gene expression. I'm currently on Imperial College London's RSE &amp; HPC Experience Programme, and I teach R, Bash, Python, and Git on research computing courses. I'm passionate about open-source software and making research more accessible.</p>
           
           <h3>Climbing</h3>
           <p>When I'm not behind a screen, you'll likely find me at the local climbing gym or crag. I instruct climbers of all levels and love the problem-solving nature of the sport.</p>
