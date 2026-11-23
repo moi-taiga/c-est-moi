@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# full-size photo originals (optimised copies live in src/assets/)
+photo-originals/
