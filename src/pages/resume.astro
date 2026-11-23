@@ -1,11 +1,150 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getSortedProjects } from '../lib/projects';
 
 const basePath = import.meta.env.BASE_URL;
 const baseUrl = basePath.endsWith('/') ? basePath : basePath + '/';
+const projectUrl = (slug: string) => `${baseUrl}projects/${slug}/`;
+
+interface Entry {
+  org: string;
+  role: string;
+  dates: string;
+  points: string[];
+  related?: { label: string; slug: string }[];
+}
+
+const education: Entry[] = [
+  {
+    org: 'University of Southampton',
+    role: 'Doctorate in Computational Biology (Single-Cell Transcriptomics & Machine Learning)',
+    dates: 'January 2023 – December 2026',
+    points: [
+      'Developing new methods to analyse single-cell transcriptomic data.',
+      'Designing, implementing, and deploying research software, including an R package for single-cell trajectory modelling and a variational autoencoder for cell representation.',
+    ],
+    related: [
+      { label: 'PathPinpointR', slug: 'pseudotime-prediction' },
+      { label: 'Generative autoencoder', slug: 'novel-gene-expression' },
+    ],
+  },
+  {
+    org: 'University of Leicester',
+    role: 'BSc Biological Sciences (Genetics), First Class',
+    dates: 'September 2018 – June 2022',
+    points: [
+      'Focused on traditional genetics, with an introduction to R, Bash, and HPC for computational biology.',
+      "Achieved over 90% in the 'Statistics in R' module.",
+    ],
+  },
+];
+
+const experience: Entry[] = [
+  {
+    org: 'Imperial College London',
+    role: 'RSE & HPC Experience Programme',
+    dates: 'July 2026 – March 2027',
+    points: [
+      'Work with both the HPC and research software engineering (RSE) teams to develop, test, and deploy software that supports the operation of the compute services and academic research.',
+      "Produce a report on the extent of computational biologists' engagement with the research compute services.",
+    ],
+  },
+  {
+    org: 'University of Southampton',
+    role: 'Software Training Instructor',
+    dates: 'July 2023 – present',
+    points: [
+      'Instruct a Software Carpentry-style course on Data Analysis and Visualisation in R.',
+      "Support other courses covering R, Bash, Python, and Git in the Southampton Research Software Group's computational research skills training.",
+    ],
+  },
+  {
+    org: 'University of Southampton',
+    role: 'Teaching Assistant',
+    dates: 'September 2023 – present',
+    points: [
+      'Assist in running courses ranging from basic coding to advanced transcriptomic and genomic analyses.',
+      'Develop and test teaching materials, support students one-to-one, assist with practical sessions, and mark assignments.',
+    ],
+  },
+  {
+    org: 'Bangor University',
+    role: 'Teaching Assistant',
+    dates: 'September 2025 – present',
+    points: [
+      'Assist in teaching coding in R and basic statistics.',
+      'Host drop-in sessions and mark assignments.',
+    ],
+  },
+  {
+    org: 'University of Southampton',
+    role: 'Postgraduate Researcher',
+    dates: 'July 2022 – December 2022',
+    points: ['Analysed phage genomes in the gut microbiome.'],
+  },
+  {
+    org: 'University of Leicester',
+    role: 'Bioinformatics Intern',
+    dates: 'July 2021',
+    points: ['Preprocessed honey bee genomic and methylomic data using HPC.'],
+    related: [{ label: 'DNA methylation analysis in bees', slug: 'honey-bee-methylation' }],
+  },
+];
+
+const projects = await getSortedProjects();
+const doiFromUrl = (url: string) => url.match(/doi\.org\/(.+)$/)?.[1];
+
+const skills = [
+  { area: 'Programming', items: 'R, Python, Bash, Git' },
+  {
+    area: 'High-performance computing',
+    items: 'Unix-based HPC, Slurm and PBS job schedulers, GPU model training, Conda/Mamba environments',
+  },
+  { area: 'Machine learning', items: 'Machine learning development, including variational autoencoders' },
+  {
+    area: 'Single-cell transcriptomics',
+    items: 'Single-cell analysis and trajectory modelling with Seurat, Bioconductor, Scanpy, and AnnData',
+  },
+  { area: 'R package development', items: 'devtools, roxygen2, testthat, R CMD check' },
+  {
+    area: 'Teaching',
+    items: 'Software Carpentry-style instruction, developing course materials, one-to-one support',
+  },
+];
+
+// Skills I have used but am not yet confident in
+const familiarWith = [
+  'Containers (Podman, Docker)',
+  'Django',
+  'PyTorch',
+  'scikit-learn',
+  'Python testing',
+  'GitHub Actions',
+  'MkDocs',
+];
+
+const courses = [
+  { name: "SSI's Industry Skills for Software Engineering", duration: '5 days' },
+  { name: 'Software Carpentry-Style Instructor Training', duration: '1 day' },
+  { name: 'Project Management for Software Engineering', duration: '1 day' },
+  { name: 'Introduction to Qualitative Research Methods', duration: 'half a day' },
+  { name: 'Machine Learning for Tabular Data in R', duration: '2 days' },
+  { name: 'Containers for Reproducible Research', duration: '1 day' },
+  { name: 'Data Analysis and Visualisation in R', duration: '1 day' },
+  { name: 'Parallelisation in R', duration: '1 day' },
+  { name: 'Green Use of HPC', duration: '1 day' },
+];
+
+const irrelevantCourses = [{ name: 'First Aid (16 hours)', duration: '2 days' }];
+
+const affiliations = [{ name: 'Society of Research Software Engineering', role: 'Member' }];
+
+// Join " — detail" with non-breaking spaces so it never wraps on its own: the line can
+// still break inside the name, but the last word, dash, and detail always stay together.
+const glued = (detail: string) => ` — ${detail}`.replaceAll(' ', ' ');
 ---
 
-<BaseLayout title="Resume - Moi">
+<BaseLayout title="CV - Moi">
   <div class="container-custom py-16">
     <div class="max-w-5xl mx-auto space-y-8">
       <div class="surface-soft relative overflow-hidden p-8 md:p-10">
@@ -14,124 +153,118 @@ const baseUrl = basePath.endsWith('/') ? basePath : basePath + '/';
           <path d="M56 16V32H72" stroke="currentColor" stroke-width="3" stroke-linejoin="round" />
           <path d="M34 44H62M34 56H62" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
         </svg>
-        <h1 class="text-4xl font-bold text-gray-900 mb-3">Resume</h1>
+        <h1 class="text-4xl font-bold text-gray-900 mb-3">CV</h1>
+        <p class="text-xl font-medium text-sage-700 mb-3">Computational Biologist &amp; Research Software Engineer</p>
         <p class="text-lg text-gray-700">
-          A snapshot of my training, research, teaching, and technical practice across bioinformatics and computational biology.
+          A snapshot of my education, experience, projects, and skills, from single-cell transcriptomics and machine learning to HPC and teaching research computing.
         </p>
       </div>
 
-      <section class="surface-card p-8">
-        <h2 class="text-2xl font-bold text-gray-900 mb-6">Education</h2>
-        <div class="space-y-8">
-          <div>
-            <h3 class="text-xl font-semibold text-gray-900">PhD in Bioinformatics — University of Southampton</h3>
-            <p class="text-sm text-gray-500 mb-4">July 2022 – January 2027 (expected)</p>
-            <ul class="list-disc pl-6 space-y-2 text-gray-700">
-              <li>Research focused on single-cell transcriptomics, interpretable latent spaces, and trajectory inference.</li>
-              <li>Developing computational methods for modelling cellular progression and functional similarity in large-scale single-cell datasets.</li>
-              <li>
-                Developed <a href={`${baseUrl}projects/pseudotime-prediction/`} class="accent-link hover:underline">PathPinpointR</a>, an R package for predicting cellular progression along predefined reference trajectories using switching genes as progression checkpoints.
-              </li>
-              <li>
-                Worked on <a href={`${baseUrl}projects/novel-gene-expression/`} class="accent-link hover:underline">affinityVAE</a> and related variational autoencoder (VAE) approaches for analysing high-dimensional single-cell transcriptomic data, including datasets containing hundreds of thousands of cells.
-              </li>
-              <li>Extensive experience using high-performance computing (HPC) systems for large-scale bioinformatic analyses and model training.</li>
-              <li>Regular use of Linux environments, Git, Conda, Apptainer/Singularity, and remote development workflows through VS Code.</li>
-              <li>Programming in R, Python, and Bash.</li>
-              <li>Experience with single-cell analysis frameworks including Scanpy and Seurat.</li>
-            </ul>
-          </div>
+      <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
+        <div class="space-y-8 lg:col-span-2">
+          {[
+            { heading: 'Education', entries: education },
+            { heading: 'Experience', entries: experience },
+          ].map(({ heading, entries }) => (
+            <section class="surface-card p-8">
+              <h2 class="text-2xl font-bold text-gray-900 mb-6">{heading}</h2>
+              <div class="space-y-8">
+                {entries.map((entry) => (
+                  <div>
+                    <h3 class="text-xl font-semibold text-gray-900">
+                      {entry.org} <span class="font-normal text-gray-700">— {entry.role}</span>
+                    </h3>
+                    <p class="text-sm text-gray-500 mb-3">{entry.dates}</p>
+                    <ul class="list-disc pl-6 space-y-2 text-gray-700">
+                      {entry.points.map((point) => <li>{point}</li>)}
+                    </ul>
+                    {entry.related && (
+                      <p class="mt-3 text-sm text-gray-600">
+                        Related projects:{' '}
+                        {entry.related.map((project, i) => (
+                          <>
+                            {i > 0 && ', '}
+                            <a href={projectUrl(project.slug)} class="accent-link hover:underline">{project.label}</a>
+                          </>
+                        ))}
+                      </p>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </section>
+          ))}
 
-          <div>
-            <h3 class="text-xl font-semibold text-gray-900">BSc Biological Sciences — University of Leicester</h3>
-            <p class="text-sm text-gray-500 mb-4">September 2018 – May 2022</p>
-            <ul class="list-disc pl-6 space-y-2 text-gray-700">
-              <li>
-                Completed a research internship focused on <a href={`${baseUrl}projects/honey-bee-methylation/`} class="accent-link hover:underline">honeybee methylation</a>, biology, and behaviour.
-              </li>
-              <li>
-                Undertook the <a href={`${baseUrl}projects/phage-classification/`} class="accent-link hover:underline">TaxMyPhage</a> third-year research project involving bacteriophage genomics and annotation.
-              </li>
-              <li>Developed practical laboratory and biological data analysis skills across molecular biology, genetics, microbiology, and ecology.</li>
-            </ul>
-          </div>
+          <section class="surface-card p-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">Projects</h2>
+            <div class="space-y-8">
+              {projects.map((project) => {
+                const doi = project.data.urls?.paper && doiFromUrl(project.data.urls.paper);
+                return (
+                  <div>
+                    <h3 class="text-xl font-semibold text-gray-900">
+                      <a href={projectUrl(project.id)} class="hover:text-sage-600 transition-colors duration-200">{project.data.title}</a>
+                      {project.data.role && <span class="font-normal text-gray-700"> — {project.data.role}</span>}
+                    </h3>
+                    <p class="mt-2 text-gray-700">{project.data.description}</p>
+                    {project.data.urls?.paper && (
+                      <p class="mt-2 text-sm text-gray-600">
+                        {doi ? 'DOI: ' : ''}
+                        <a href={project.data.urls.paper} target="_blank" rel="noopener noreferrer" class="accent-link hover:underline">
+                          {doi ?? 'Paper ↗'}
+                        </a>
+                      </p>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </section>
         </div>
-      </section>
 
-      <section class="surface-card p-8">
-        <h2 class="text-2xl font-bold text-gray-900 mb-6">Research and Technical Experience</h2>
-        <div>
-          <h3 class="text-xl font-semibold text-gray-900">HPC and Research Software Engineering Experience Programme — Imperial College London</h3>
-          <p class="text-sm text-gray-500 mb-4">July 2026</p>
-          <ul class="list-disc pl-6 space-y-2 text-gray-700">
-            <li>Training and practical experience in high-performance computing (HPC), research software engineering, and reproducible computational workflows.</li>
-            <li>Exposure to collaborative software development practices, scientific infrastructure, and scalable computational research environments.</li>
-          </ul>
-        </div>
-      </section>
-
-      <section class="surface-card p-8">
-        <h2 class="text-2xl font-bold text-gray-900 mb-6">Teaching, Demonstrating, and Training Experience</h2>
-        <div class="space-y-8">
-          <div>
-            <h3 class="text-xl font-semibold text-gray-900">Bangor University</h3>
-            <p class="font-medium text-gray-700 mb-3">Undergraduate Demonstrator and Marker</p>
-            <ul class="list-disc pl-6 space-y-2 text-gray-700">
-              <li>Supported undergraduate teaching across a range of biological science practicals and workshops.</li>
-              <li>Assisted students during in-person laboratory sessions and practical classes.</li>
-              <li>Contributed to coursework assessment and marking.</li>
+        <aside class="space-y-8">
+          <section class="surface-card p-6">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">Skills</h2>
+            <dl class="space-y-4">
+              {skills.map(({ area, items }) => (
+                <div>
+                  <dt class="font-semibold text-gray-900">{area}</dt>
+                  <dd class="text-gray-700">{items}</dd>
+                </div>
+              ))}
+            </dl>
+            <h3 class="text-lg font-semibold text-gray-900 mt-6 mb-1">Also familiar with</h3>
+            <p class="text-sm text-gray-500 mb-3">Tools I have used and am still building confidence in.</p>
+            <ul class="flex flex-wrap gap-2">
+              {familiarWith.map((skill) => <li class="tag px-2 py-1 text-xs">{skill}</li>)}
             </ul>
-          </div>
+          </section>
 
-          <div>
-            <h3 class="text-xl font-semibold text-gray-900">University of Southampton</h3>
-            <p class="font-medium text-gray-700 mb-3">Bioinformatics Demonstrator and Marker</p>
-            <ul class="list-disc pl-6 space-y-2 text-gray-700">
-              <li>Supported undergraduate and postgraduate teaching in bioinformatics and computational biology.</li>
-              <li>Assisted students with coding, data analysis, and interpretation of biological datasets.</li>
-              <li>Delivered support during both online and in-person teaching sessions.</li>
-              <li>Contributed to coursework marking and student feedback.</li>
+          <section class="surface-card p-6">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">Courses Attended</h2>
+            <ul class="space-y-3 text-gray-700">
+              {courses.map(({ name, duration }) => (
+                <li><span class="font-medium text-gray-900">{name}</span>{glued(duration)}</li>
+              ))}
             </ul>
-          </div>
-
-          <div>
-            <h3 class="text-xl font-semibold text-gray-900">University of Southampton Research Software Engineering Team</h3>
-            <p class="font-medium text-gray-700 mb-3">Training and Course Support</p>
-            <ul class="list-disc pl-6 space-y-2 text-gray-700">
-              <li>Assisted with the delivery of software and data analysis training courses.</li>
-              <li>Delivered teaching sessions on data visualisation in R.</li>
-              <li>Supported learners with varying computational backgrounds in both online and in-person formats.</li>
-              <li>Contributed to training focused on reproducible research and computational workflows.</li>
+            <h3 class="text-lg font-semibold text-gray-900 mt-6 mb-3">Hopefully Irrelevant Courses</h3>
+            <ul class="space-y-3 text-gray-700">
+              {irrelevantCourses.map(({ name, duration }) => (
+                <li><span class="font-medium text-gray-900">{name}</span>{glued(duration)}</li>
+              ))}
             </ul>
-          </div>
-        </div>
-      </section>
+          </section>
 
-      <section class="surface-card p-8">
-        <h2 class="text-2xl font-bold text-gray-900 mb-6">Technical Skills</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-700">
-          <div class="rounded-3xl border border-sage-200 bg-white/65 p-4">
-            <h3 class="font-semibold text-gray-900 mb-2">Programming languages</h3>
-            <p>R, Python, Bash</p>
-          </div>
-          <div class="rounded-3xl border border-sage-200 bg-white/65 p-4">
-            <h3 class="font-semibold text-gray-900 mb-2">Bioinformatics and data science</h3>
-            <p>Single-cell transcriptomics, trajectory inference, dimensionality reduction, statistical modelling, machine learning</p>
-          </div>
-          <div class="rounded-3xl border border-sage-200 bg-white/65 p-4">
-            <h3 class="font-semibold text-gray-900 mb-2">Frameworks and tools</h3>
-            <p>Scanpy, Seurat, Git, Conda, Apptainer/Singularity, VS Code, Linux, HPC systems</p>
-          </div>
-          <div class="rounded-3xl border border-sage-200 bg-white/65 p-4">
-            <h3 class="font-semibold text-gray-900 mb-2">Computational methods</h3>
-            <p>Variational autoencoders (VAEs), data visualisation, reproducible workflows, large-scale transcriptomic analysis</p>
-          </div>
-          <div class="rounded-3xl border border-sage-200 bg-white/65 p-4 md:col-span-2">
-            <h3 class="font-semibold text-gray-900 mb-2">Teaching and communication</h3>
-            <p>Scientific demonstrating, technical training, workshop support, online and in-person instruction</p>
-          </div>
-        </div>
-      </section>
+          <section class="surface-card p-6">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">Affiliations</h2>
+            <ul class="space-y-3 text-gray-700">
+              {affiliations.map(({ name, role }) => (
+                <li><span class="font-medium text-gray-900">{name}</span>{glued(role)}</li>
+              ))}
+            </ul>
+          </section>
+        </aside>
+      </div>
     </div>
   </div>
 </BaseLayout>
