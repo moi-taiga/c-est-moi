@@ -1,12 +1,45 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import leadClimb from '../assets/climbing/lead-climb.jpg';
+import mountainsLandscape from '../assets/climbing/mountains-landscape.jpg';
+import mountainsPortrait from '../assets/climbing/mountains-portrait.jpg';
 
 const basePath = import.meta.env.BASE_URL;
 const baseUrl = basePath.endsWith('/') ? basePath : basePath + '/';
+
+// Background photo for this page. To try a different one, change `background` below.
+// `position` is the CSS object-position: which part of the photo stays in view
+// when it is cropped to fill the screen (horizontal %, vertical %).
+const backgrounds = {
+  leadClimb: { src: leadClimb, position: '50% 20%' },
+  mountainsLandscape: { src: mountainsLandscape, position: '57% 40%' },
+  mountainsPortrait: { src: mountainsPortrait, position: '55% 40%' },
+};
+const background = backgrounds.leadClimb;
 ---
 
 <BaseLayout title="Climbing - Moi">
-  <div class="container-custom py-16">
+  <!--
+    Background photo, softened so it sits behind the content.
+    Strength of the effect: `blur-xs` on the image (try blur-sm / blur-md for more)
+    and `bg-sage-50/50` on the wash layer (higher number = more washed out).
+    `scale-105` pushes the blurred edges off-screen so they don't show a pale rim.
+  -->
+  <div class="pointer-events-none fixed left-0 top-0 -z-10 h-lvh w-full overflow-hidden" aria-hidden="true">
+    <Image
+      src={background.src}
+      alt=""
+      widths={[640, 960, 1280, 1920]}
+      sizes="100vw"
+      loading="eager"
+      fetchpriority="high"
+      class="h-full w-full scale-105 object-cover blur-xs"
+      style={`object-position: ${background.position}`}
+    />
+    <div class="absolute inset-0 bg-sage-50/50"></div>
+  </div>
+  <div class="container-custom pt-[30vh] pb-16 md:pt-[40vh]">
     <div class="surface-card relative mx-auto max-w-4xl overflow-hidden p-8 md:p-12">
       <svg class="page-sketch right-4 top-4 hidden h-32 w-40 md:block" viewBox="0 0 160 120" fill="none" aria-hidden="true">
         <path d="M12 98L48 56L70 78L108 30L148 98" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />

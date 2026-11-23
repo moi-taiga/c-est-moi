@@ -5,7 +5,8 @@ Shared instructions and skills for AI coding agents working on this repo (GitHub
 ```
 .agents/
 ├── instructions/          # Rules agents should always follow
-│   └── british-english.md
+│   ├── british-english.md
+│   └── contact-form.md
 └── skills/                # Reusable task instructions (add as needed)
 ```
 
