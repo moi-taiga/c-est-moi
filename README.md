@@ -2,6 +2,9 @@
 
 A modern, professional personal website serving as a central hub for my blog, portfolio, CV, and publications. Built with Astro, Tailwind CSS, and TypeScript, featuring markdown-first content management.
 
+> [!NOTE]
+> **Full disclosure: this site is vibe coded.** Most of the code here was written by AI coding agents (such as GitHub Copilot's coding agent and Claude Code) rather than by me. I use this repo as a low-consequence playground for trying out modern agentic coding workflows: delegating tasks to agents, reviewing their pull requests, and seeing what works and what doesn't. The content is mine; much of the code is theirs. Expect some rough edges!
+
 now uses GH actions to build and deploy!
 
 ## 🚀 Quick Start
@@ -69,7 +72,7 @@ Create a new file `content/publications/your-paper.md` to list a new research pa
 
 ## 🎨 Styling & Branding
 
-The website's design is managed via **Tailwind CSS**. Brand colors, typography, and utility classes are configured in `tailwind.config.js` and `src/styles/global.css`.
+The website's design is managed via **Tailwind CSS**. Colours, typography, and utility classes are configured in `tailwind.config.js` and `src/styles/global.css`.
 
 ## 🛠️ Development Commands
 
